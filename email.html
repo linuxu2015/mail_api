@@ -1,0 +1,49 @@
+<html>
+	<body style="font-family: Consolas; 'Microsoft Yahei'">
+	<h4 style="color: {{if .IsOK}}green{{else}}red{{end}}">报警状态：{{.Event.Status}}</h4>
+	<table>
+	    <tr>
+	        <th>监控项：</th>
+	        <td>{{.Event.Metric}}{{if .Event.PushTags}} / {{.Event.PushTags}}{{end}}</td>
+	    </tr>
+	    <tr>
+	        <th>备注：</th>
+	        <td>{{.Event.Note}}</td>
+	    </tr>
+	    <tr>
+	        <th>规则配置：</th>
+	        <td>{{.Event.Metric}}{{if .Event.RuleTags}} / {{.Event.RuleTags}}{{end}}</td>
+	    </tr>
+	    <tr>
+	        <th>触发条件：</th>
+	        <td>{{.Event.Func}} {{.LeftValue}}{{.Event.Operator}}{{.RightValue}}</td>
+	    </tr>
+	    <tr>
+	        <th>报警级别：</th>
+	        <td>P{{.Event.Priority}}</td>
+	    </tr>
+	    {{if not .IsOK}}
+	    <tr>
+	        <th>报警次数：</th>
+	        <td>当前是第{{.Event.Step}}次，最多报{{.Event.Max}}次</td>
+	    </tr>
+	    {{end}}
+	    <tr>
+	        <th>触发时间：</th>
+	        <td>{{.TS}}</td>
+	    </tr>
+	    <tr>
+	        <th>相关策略：</th>
+	        <td>
+	            <a href="{{.RulesUrl}}">{{.RulesUrl}}</a>
+	        </td>
+	    </tr>
+	    <tr>
+	        <th>团队成员：</th>
+	        <td>
+	            <a href="{{.UsersUrl}}">{{.UsersUrl}}</a>
+	        </td>
+	    </tr>
+	</table>
+	</body>
+</html>
