@@ -2,10 +2,7 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
-from sendmail import send_mail
-#import sys
-#reload(sys)
-#sys.setdefaultencoding('utf-8')
+
 
 app = Flask(__name__)
 
